@@ -1,9 +1,13 @@
-package com.test.sort;
+package com.test.sort.util;
 
 import com.alibaba.fastjson.JSON;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BubbleSort {
+
+    private static final Logger logger = LoggerFactory.getLogger(BubbleSort.class);
 
     /**
      * 冒泡排序
@@ -14,7 +18,7 @@ public class BubbleSort {
      *
      * @param source 需要排序的整型数组
      */
-    public static void sort(@NotNull int[] source) {
+    public static long sort(@NotNull int[] source) {
         int[] numbers = source.clone();
         long startTime = System.currentTimeMillis();
         int temp = 0;
@@ -30,7 +34,8 @@ public class BubbleSort {
             }
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("bubbleSort耗时：" + (endTime - startTime) + "ms");
-        System.out.println(JSON.toJSON(numbers));
+        logger.info("bubbleSort耗时：" + (endTime - startTime) + "ms");
+        logger.info(JSON.toJSONString(numbers));
+        return  endTime - startTime;
     }
 }

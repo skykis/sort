@@ -1,9 +1,13 @@
-package com.test.sort;
+package com.test.sort.util;
 
 import com.alibaba.fastjson.JSON;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class QuickSort {
+
+    private static final Logger logger = LoggerFactory.getLogger(QuickSort.class);
 
     /**
      * 查找出中轴（默认是最低位low）的在numbers数组排序后所在位置
@@ -49,7 +53,7 @@ public class QuickSort {
      *
      * @param source 带排序数组
      */
-    public static void sort(@NotNull int[] source) {
+    public static long sort(@NotNull int[] source) {
         int[] numbers = source.clone();
         long startTime = System.currentTimeMillis();
         if (numbers.length > 0) {
@@ -57,7 +61,8 @@ public class QuickSort {
             quick(numbers, 0, numbers.length - 1);
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("quickSort耗时：" + (endTime - startTime) + "ms");
-        System.out.println(JSON.toJSON(numbers));
+        logger.info("quickSort耗时：" + (endTime - startTime) + "ms");
+        logger.info(JSON.toJSONString(numbers));
+        return  endTime - startTime;
     }
 }
