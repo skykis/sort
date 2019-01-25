@@ -43,6 +43,9 @@ public class TestController {
         result.put("QuickSort", String.valueOf(QuickSort.sort(n)));
         result.put("SelectSort", String.valueOf(SelectSort.sort(n)));
         result.put("InsertSort", String.valueOf(InsertSort.sort(n)));
+        result.put("ShellSort", String.valueOf(ShellSort.sort(n)));
+        result.put("MergeSort", String.valueOf(MergeSort.sort(n)));
+        result.put("HeapSort", String.valueOf(HeapSort.sort(n)));
         return JSON.toJSONString(result);
     }
 }
